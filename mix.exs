@@ -452,7 +452,7 @@ defmodule EMQXUmbrella.MixProject do
       # FIXME: this is empty in `make emqx` ???
       erl_opts: "",
       emqx_description: emqx_description(release_type, edition_type),
-      built_on: built_on(),
+      built_on_arch: built_on(),
       is_elixir: "yes"
     ]
   end
