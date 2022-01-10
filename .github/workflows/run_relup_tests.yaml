@@ -20,9 +20,15 @@ jobs:
           - emqx-enterprise
         otp_vsn:
           - 24.1.5-3
+        # no need to use more than 1 version of Elixir, since tests
+        # run using only Erlang code.  This is needed just to specify
+        # the base image.
+        elixir_vsn:
+          - 1.13.1
 
     runs-on: ubuntu-20.04
-    container: "ghcr.io/emqx/emqx-builder/5.0-3:${{ matrix.otp_vsn }}-ubuntu20.04"
+    # FIXME: use tagged version once merged
+    container: "ghcr.io/emqx/emqx-builder/elixir:${{ matrix.elixir_vsn }}-${{ matrix.otp_vsn }}-ubuntu20.04"
 
     defaults:
       run:

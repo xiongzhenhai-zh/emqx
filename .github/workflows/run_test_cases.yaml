@@ -16,7 +16,8 @@ jobs:
         strategy:
           matrix:
             emqx_builder:
-              - 5.0-3:24.1.5-3
+              # FIXME: use tagged version once merged
+              - elixir:1.13.1-24.1.5-3
 
         runs-on: ubuntu-20.04
         container: "ghcr.io/emqx/emqx-builder/${{ matrix.emqx_builder }}-ubuntu20.04"
