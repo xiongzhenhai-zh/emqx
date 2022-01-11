@@ -20,6 +20,7 @@ esac
 
 PACKAGE_NAME="${1}"
 PACKAGE_TYPE="${2}"
+ARCH="${3}"
 
 export DEBUG=1
 export CODE_PATH=${CODE_PATH:-"/emqx"}
@@ -47,17 +48,20 @@ if ! [ -f "$PACKAGE_FILE" ]; then
     echo "$PACKAGE_FILE is not a file"
 fi
 
-case "$(uname -m)" in
+if [ -z "$ARCH" ]
+then
+  case "$(uname -m)" in
     x86_64)
-        ARCH='amd64'
-        ;;
+      ARCH='amd64'
+      ;;
     aarch64)
-        ARCH='arm64'
-        ;;
+      ARCH='arm64'
+      ;;
     arm*)
-        ARCH=arm
-        ;;
-esac
+      ARCH=arm
+      ;;
+  esac
+fi
 export ARCH
 
 emqx_prepare(){
