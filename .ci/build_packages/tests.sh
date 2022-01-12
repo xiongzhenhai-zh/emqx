@@ -4,16 +4,16 @@ set -euo pipefail
 set -x
 
 if [ -z "${1:-}" ]; then
-    echo "Usage $0 <PACKAGE_NAME> zip|pkg|elixirpkg"
+    echo "Usage $0 <PACKAGE_NAME> zip|pkg"
     exit 1
 fi
 
 case "${2:-}" in
-  zip|pkg|elixirpkg)
+  zip|pkg)
     true
     ;;
   *)
-    echo "Usage $0 <PACKAGE_NAME> zip|pkg|elixirpkg"
+    echo "Usage $0 <PACKAGE_NAME> zip|pkg"
     exit 1
     ;;
 esac
