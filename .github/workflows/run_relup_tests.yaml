@@ -27,8 +27,7 @@ jobs:
           - 1.13.1
 
     runs-on: ubuntu-20.04
-    # FIXME: use tagged version once merged
-    container: "ghcr.io/emqx/emqx-builder/elixir:${{ matrix.elixir_vsn }}-${{ matrix.otp_vsn }}-ubuntu20.04"
+    container: "ghcr.io/emqx/emqx-builder/5.0.0:${{ matrix.elixir_vsn }}-${{ matrix.otp_vsn }}-ubuntu20.04"
 
     defaults:
       run:
