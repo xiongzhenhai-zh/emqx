@@ -763,15 +763,9 @@ do_deliver({PacketId, Msg}, Channel = #channel{clientinfo = ClientInfo =
             ok = emqx_metrics:inc('delivery.dropped.no_local'),
             {[], Channel};
         false ->
-            ok = emqx_metrics:inc('messages.delivered'),
-            Msg1 = emqx_hooks:run_fold('message.delivered',
-                                       [ClientInfo],
-                                       emqx_message:update_expiry(Msg)
-                                      ),
-            Msg2 = emqx_mountpoint:unmount(MountPoint, Msg1),
-            Packet = emqx_message:to_packet(PacketId, Msg2),
-            {NPacket, NChannel} = packing_alias(Packet, Channel),
-            {[NPacket], NChannel}
+            ok = emqx_metrics:inc('delivery.dropped'),
+            ok = emqx_metrics:inc('delivery.dropped.no_local'),
+            {[], Channel};
     end;
 
 do_deliver([Publish], Channel) ->
