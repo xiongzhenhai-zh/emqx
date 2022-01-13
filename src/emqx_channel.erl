@@ -765,7 +765,7 @@ do_deliver({PacketId, Msg}, Channel = #channel{clientinfo = ClientInfo =
         false ->
             ok = emqx_metrics:inc('delivery.dropped'),
             ok = emqx_metrics:inc('delivery.dropped.no_local'),
-            {[], Channel};
+            {[], Channel}
     end;
 
 do_deliver([Publish], Channel) ->
