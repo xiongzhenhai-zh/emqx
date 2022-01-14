@@ -788,7 +788,7 @@ do_deliver(Publishes, Channel) when is_list(Publishes) ->
 %% ignore_local(#message{flags = #{nl := true}, from = ClientId},
 %%              #{clientid := ClientId}) ->
 %%     true;
-ignore_local(#message{from = ClientId, content = payload},
+ignore_local(#message{from = ClientId},
              #{clientid := ClientId}, #{content := null} ) ->
     true;
 
