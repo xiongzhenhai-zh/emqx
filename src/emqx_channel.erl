@@ -789,7 +789,7 @@ do_deliver(Publishes, Channel) when is_list(Publishes) ->
 %%              #{clientid := ClientId}) ->
 %%     true;
 ignore_local(#message{from = ClientId},
-             #{clientid := ClientId}, #{content := null} ) ->
+             #{clientid := ClientId}) ->
     true;
 
 ignore_local(_Msg, _ClientInfo) -> false.
